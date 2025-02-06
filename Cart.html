@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Stone Wall</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <header>
+        <a href="STONEWALL3.html">
+        <img src="logos/stonewall logo white.png" alt="Stone Wall Logo" >
+    </a>
+        <nav>
+            <a href="STONEWALL3.html">Home</a>
+            <a href="#">Collections</a>
+            <a href="#">Support</a>
+            <a href="#">Account</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="product-summary">
+            <h2>My Shopping Bag (1)</h2>
+            <div class="product-details">
+                <img src="clothing3.jpg" alt="Product">
+                <div>
+                    <h3>Monogram Wallet</h3>
+                    <p>Price: AUD 605</p>
+                    <p>Material: Leather</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-summary">
+            <h2>Order Summary</h2>
+            <p>Subtotal: AUD 605</p>
+            <p>Shipping: AUD 0</p>
+            <p>Total: AUD 605</p>
+            <button>Proceed to Checkout</button>
+            <button style="background-color: #0070ba; color: #fff;">Pay with PayPal</button>
+        </div>
+    </div>
+
+    <div class="additional-info">
+        <h3>Additional Information</h3>
+        <ul>
+            <li>Payment Methods: Credit Card, Debit Card, PayPal</li>
+            <li>Delivery: Complimentary delivery on all orders</li>
+            <li>Returns: Complimentary returns within 30 days</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 STONEWALL. All rights reserved.</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const cartItemsContainer = document.querySelector('.product-summary');
+    const checkoutSummary = document.querySelector('.checkout-summary');
+
+    const cart = JSON.parse(localStorage.getItem('cartItems')) || []; // Retrieve cart from localStorage
+    let subtotal = 0;
+
+    // Render cart items
+    cartItemsContainer.innerHTML = `
+        <h2>My Shopping Bag (${cart.length})</h2>
+        ${cart.map(item => `
+            <div class="product-details">
+                <img src="${item.imgSrc}" alt="${item.name}">
+                <div>
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price.toFixed(2)}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                </div>
+            </div>
+        `).join('')}
+    `;
+
+    // Calculate subtotal
+    cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+    });
+
+    // Render order summary
+    checkoutSummary.innerHTML = `
+        <h2>Order Summary</h2>
+        <p>Subtotal: $${subtotal.toFixed(2)}</p>
+        <p>Shipping: AUD 0</p>
+        <p>Total: $${subtotal.toFixed(2)}</p>
+        <button>Proceed to Checkout</button>
+        <button style="background-color: #0070ba; color: #fff;">Pay with PayPal</button>
+    `;
+});
+</script>
+</body>
+</html>

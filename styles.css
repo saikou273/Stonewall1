@@ -1,0 +1,782 @@
+/* General Body Styling */
+body {
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #4a4a4a;
+    color: #dcdcdc;
+    overflow-x: hidden;
+}
+
+/* Header Styling */
+header {
+    background-color: #dcdcdc;
+    color: #4a4a4a;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left .search input {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #4a4a4a;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #4a4a4a;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.header-left .search input::placeholder {
+    color: #4a4a4a;
+    font-style: italic;
+}
+
+.header-left .search input:focus {
+    background-color: #1a1a1a;
+    border-color: #000000;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: color 0.3s ease;
+}
+
+.header-right a:hover {
+    color: #000000;
+}
+
+.header-button {
+    font-family: 'Playfair Display', serif;
+    background: none;
+    border: none;
+    color: #4a4a4a;
+    font-size: 2rem;
+    cursor: pointer;
+    text-decoration: none;
+    position:relative;
+    right: 43%;
+}
+
+.header-button:hover {
+    text-decoration: none;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #4a4a4a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+/* Navigation Styling */
+nav {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    width: 300px;
+    background-color: #4a4a4a;
+    padding-top: 60px;
+    transition: left 0.3s ease;
+
+}
+
+nav.active {
+    left: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #777777;
+    color: #fff;
+}
+
+nav .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 200px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.6rem;
+    margin-bottom: 50px;
+}
+
+.hero button {
+    padding: 15px 40px;
+    font-size: 1.3rem;
+    border: 2px solid #c8a165;
+    background-color: transparent;
+    color: #c8a165;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero button:hover {
+    background-color: #c8a165;
+    color: #fff;
+}
+
+/* About Section */
+.about {
+    padding: 100px 40px;
+    text-align: center;
+    background-color: #1a1a1a;
+}
+
+.about h2 {
+    margin-bottom: 30px;
+    font-size: 2.8rem;
+    color: #c8a165;
+}
+
+.about p {
+    margin: 0 auto;
+    max-width: 800px;
+    line-height: 1.8;
+    font-size: 1.3rem;
+    color: #d3d3d3;
+}
+
+/* Items Grid */
+.item-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.item-box {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item-box:hover {
+    transform: translateY(-5px);
+}
+
+.item-box img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.item-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #4a4a4a;
+}
+
+.item-box p {
+    font-size: 1rem;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+.item-box button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.item-box button:hover {
+    background-color: #555;
+}
+
+
+#topSearchBar.hidden {
+    display: none; /* Completely hides the search bar */
+}
+.header-left .search.hidden {
+    display: none;
+}
+/* Search UI Styling */
+.search-ui {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Adjust width to be more spacious */
+    max-width: 1200px; /* Optional max width for larger screens */
+    height: auto; /* Automatically adjust height based on content */
+    max-height: 90%; /* Prevent the UI from exceeding the viewport height */
+    background: #dcdcdc;
+    border-radius: 15px;
+    padding: 30px; /* Add more padding for a luxurious feel */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Add vertical scroll if content exceeds max height */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+}
+
+.search-ui.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 1000px; /* Center and limit content width */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.5rem;
+    border: 1px solid #4a4a4a;
+    border-radius: 10px;
+    background: #dcdcdc;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+.search-box input::placeholder {
+    color: #4a4a4a;
+    font-style: italic;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Maintain 4 columns */
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.item-box.placeholder {
+    visibility: hidden; /* Invisible placeholders to maintain grid layout */
+}
+/* Cart UI */
+.cart-ui {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 400px;
+    height: 100%;
+    background-color: #dcdcdc;
+    color: #4a4a4a;
+    padding: 20px;
+
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-ui.active {
+    right: 0;
+}
+
+.cart-ui .close-cart {
+    font-size: 1.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.cart-ui h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #636363;
+    padding-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    margin-bottom: 20px;
+    background: #a1a1a1;
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.cart-item .item-details {
+    flex-grow: 1;
+}
+
+.cart-item .item-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.cart-item .item-details p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #d3d3d3;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quantity button {
+    background: #000000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.quantity button:hover {
+    background: #5a5a5a;
+}
+
+.quantity input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background: #a1a1a1;
+    color: #a1a1a1;
+    margin: 0 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.remove-item {
+    background: none;
+    color: #a1a1a1;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
+.cart-footer {
+    margin-top: auto;
+    padding: 40px 20px; /* Increase padding to avoid cutoff */
+    border-top: 1px solid #444;
+    text-align: center;
+    position: relative; /* Ensure proper positioning */
+}
+
+.cart-footer h3 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #4a4a4a;
+}
+
+.checkout-btn {
+    background: #000000;
+    color: #4a4a4a;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    margin-top: 10px; /* Add margin to separate the button from the total */
+}
+
+.checkout-btn:hover {
+    background: #a88750;
+}
+footer {
+    background-color: #dcdcdc;
+    color: #4a4a4a;
+    text-align: center; /* Center-align text */
+    padding: 40px 0;
+    position: relative; /* Ensure proper positioning */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+}
+.centered-heading {
+    text-align: center; /* Center-align text */
+    font-size: 2.5rem; /* Adjust size for luxury feel */
+    margin: 40px 0; /* Add spacing around the heading */
+    color: #4a4a4a; /* Luxurious gold color */
+    font-weight: bold; /* Bold for emphasis */
+}
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-item-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: white;
+    font-size: 0.8rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    display: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    right: -50%; /* Start off-screen */
+    width: 50%; /* Take up half of the screen width */
+    height: 100%;
+    background-color: #4a4a4a; /* Black background */
+    color: #dcdcdc; /* White text */
+    z-index: 1000; /* Ensure it appears above other content */
+    overflow-y: auto; /* Scroll if content overflows */
+    transition: right 0.3s ease; /* Smooth slide-in transition */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Active State for Modal */
+.modal.active {
+    right: 0; /* Slide into view */
+}
+
+/* Modal Header */
+.modal-content {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #4a4a4a; /* White close button */
+}
+
+/* Checkout Button */
+.checkout-btn {
+    background-color: #fff; /* White background for contrast */
+    color: #000; /* Black text */
+    border: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 20px auto;
+    cursor: pointer;
+    display: block;
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.checkout-btn:hover {
+    background-color: #f1f1f1; /* Slightly lighter background on hover */
+}
+
+/* Cart Item Styling */
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    border-bottom: 1px solid #333; /* Divider between items */
+    padding-bottom: 15px;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.item-details h3 {
+    font-size: 18px;
+    margin: 0;
+    color: #fff; /* White text */
+}
+
+.item-details p {
+    margin: 5px 0;
+    color: #ccc; /* Light gray text */
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity button {
+    background-color: #444; /* Dark button background */
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity input {
+    width: 40px;
+    text-align: center;
+    margin: 0 10px;
+    background-color: #000; /* Match modal background */
+    color: #fff;
+    border: 1px solid #444;
+}
+/* Navigation Styling */
+#nav-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    width: 300px;
+    background: #dcdcdc;
+    color: #4a4a4a;
+    transition: left 0.4s ease-in-out;
+    z-index: 999;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+#nav-menu.active {
+    left: 0;
+}
+
+#nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-menu ul li {
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#nav-menu ul li:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
+.menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #4a4a4a;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Submenu container: hidden by default */
+#sub-menu-container {
+    position: fixed;
+    top: 0;
+    left: 300px; /* Hidden off-screen by default */
+    height: 100%;
+    width: 300px;
+    background: #dcdcdc;
+    transition: left 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    z-index: 998;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    transform: translateX(100%); /* Fully hidden to the right */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Submenu active state */
+#sub-menu-container.active {
+    transform: translateX(0); /* Slide in next to the main menu */
+    opacity: 1;
+    visibility: visible;
+}
+
+#sub-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sub-menu ul li {
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#sub-menu ul li:hover {
+    background: #444444;
+    color: #ffffff;
+}
+
+.sub-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.submenu-button:hover {
+    background: #444; /* Lighter background on hover */
+    transform: translateX(5px); /* Subtle animation on hover */
+}
+
+#sub-menu-container {
+    position: fixed;
+    top: 0;
+    left: 300px; /* Align with the main menu */
+    width: 300px; /* Ensure the submenu width matches the main menu */
+    height: 100%;
+    background-color: #dcdcdc; /* Match the submenu background with the main menu */
+
+    padding-top: 20px;
+    z-index: 999;
+    overflow-y: auto; /* Add scroll if needed */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: start; /* Start buttons from the top */
+}
+#sub-menu {
+    list-style-type: none; /* Removes the dots */
+    padding: 0; /* Removes padding from the list */
+    margin: 0; /* Removes margin from the list */
+}
+
+#sub-menu li {
+    margin: 10px 0; /* Adds spacing between list items */
+}
+
+.submenu-btn {
+    display: block;
+    text-align: left;
+    padding: 20px; /* Match the padding size */
+    background-color: #dcdcdc; /* Background color */
+    color: #4a4a4a; /* Text color */
+    border: none; /* Removes the button border */
+    width: 100%; /* Ensures buttons are full width */
+    cursor: pointer;
+    font-size: 1rem; /* Match the font size of the main menu */
+    font-weight: 500; /* Font weight for boldness */
+    text-transform: uppercase; /* Match text transformation */
+    letter-spacing: 1px; /* Match letter spacing */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Add a border like the main menu */
+    transition: background 0.3s, color 0.3s; /* Same hover transition */
+}
+
+.submenu-btn:hover {
+    background: #333333; /* Match hover background color */
+    color: #ffffff; /* Match hover text color */
+}

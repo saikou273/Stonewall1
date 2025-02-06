@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone Wall - Australia Official Website</title>
+    <link rel="stylesheet" href="Main.css">
+    <link rel="icon" type="image/x-icon" href="images/SW1.ico">
+</head>
+<body>
+    <section class="video-gallery">
+        <div class="video-item">
+            <div class="overlay">
+                <h2>Gym & Accessories</h2>
+                <a href="Gym.html">Shop Now</a>
+            </div>
+            <video src="Stock1.mp4" muted></video>
+        </div>
+        <img src="logos/stonewall logo white.png" alt="Logo" class="stonewall-image">
+        <div class="stonewall-header">STONEWALL</div>
+        <div class="stonewall-location">MELBOURNE AUSTRALIA</div>
+        <div class="video-item">
+            <div class="overlay">
+                <h2>Fashion & Beauty</h2>
+                <a href="Fashion.html">Shop Now</a>
+            </div>
+            <video src="Stock2.mp4" muted></video>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h3>Inspire me with all the latest news</h3>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Confirm</button>
+        </form>
+        <div class="footer-links">
+            <a href="#">Follow Us</a>
+            <a href="https://www.tiktok.com/@stonewallau?lang=en">TikTok</a>
+            <a href="https://www.instagram.com/stonewall.au/">Instagram</a>
+            <a href="https://x.com/Stonewallau">X</a>
+            <a href="https://www.threads.net/@stonewall.au?xmt=AQGzO9tW40IhQs5k-lyfjzmF5PK7_50GKOAYbie87xo2dOk">Threads</a>
+        </div>
+        <div class="footer-stonewall">STONEWALL</div>
+        <div class="footer-region">
+            <label for="region-select">Country/Region: </label>
+            <select id="region-select">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="es">Spanish</option>
+                <option value="zh">Chinese</option>
+            </select>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.video-item').forEach(item => {
+            const video = item.querySelector('video');
+            const pauseButton = item.querySelector('.pause-button');
+            let isPaused = true;
+    
+            // Initial darkened state
+            item.classList.add('darkened');
+    
+    
+            // Remove darkened state on hover
+            item.addEventListener('mouseover', () => {
+                if (video.paused) {
+                    item.classList.remove('darkened');
+                }
+                video.play();
+            });
+    
+            // Add darkened state on mouse out
+            item.addEventListener('mouseout', () => {
+                if (isPaused) {
+                    video.pause();
+                    item.classList.add('darkened');
+                }
+            });
+        });
+        
+    </script>    
+</body>
+</html>

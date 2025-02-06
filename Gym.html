@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone Wall - Australia Official Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="images/SW1.ico">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="search" id="topSearchBar">
+                <input type="text" placeholder="Search...">
+            </div>
+        </div>
+
+        <!-- Search UI -->
+        <div class="search-ui" id="searchUI">
+            <div class="search-box" onclick="event.stopPropagation()">
+                <input type="text" id="searchInput" placeholder="Search items..." oninput="filterItems()">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
+<!-- Cart UI -->
+<div class="cart-ui" id="cartUI">
+    <button class="close-cart" onclick="toggleCartUI()">&times;</button>
+    <h2>Your Cart</h2>
+    <div id="cartItems">
+        <!-- Example Cart Item -->
+        <div class="cart-item">
+            <img src="clothing1.jpg" alt="Item 1">
+            <div class="item-details">
+                <h3>Elegant Design</h3>
+                <p>Price: $150</p>
+                <div class="quantity">
+                    <button onclick="updateQuantity(this, -1)">-</button>
+                    <input type="number" value="1" readonly>
+                    <button onclick="updateQuantity(this, 1)">+</button>
+                </div>
+                <button class="remove-item" onclick="removeCartItem(this)">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <h3>Total: $150</h3>
+        <a  style="text-decoration:none" href="Cart.html">
+            <button class="checkout-btn">Proceed to Checkout</button>
+          </a>
+          
+    </div>
+</div>
+        <h1><button class="header-button" onclick="location.href='STONEWALL3.html'">STONEWALL</button></h1>
+        <div class="header-right">
+            <a href="tel:+123456789" aria-label="Call Us">
+                <img src="phone dark grey.png" alt="Call Us" style="width: 24px; height: 24px;">
+            </a>
+            <a href="#account" aria-label="My Account">
+                <img src="account dark grey.png" alt="My Account" style="width: 24px; height: 24px;">
+            </a>
+            <a href="#cart" aria-label="Cart" id="cartIcon" class="cart-icon">
+                <img src="checkout dark grey.png" alt="Cart" style="width: 24px; height: 24px;">
+                <span id="cartItemCount" class="cart-item-count">0</span>
+            </a>
+        </div>
+        <nav id="nav-menu">
+            <button class="menu-close" onclick="closeMenu()">×</button>
+            <ul>
+                <li onclick="openSubMenu('men')">Men</li>
+                <li onclick="openSubMenu('women')">Women</li>
+                <li onclick="openSubMenu('bags')">Bags</li>
+                <li onclick="openSubMenu('accessories')">Accessories</li>
+                <li onclick="openSubMenu('services')">Services</li>
+            </ul>
+        </nav>
+        
+        <div id="sub-menu-container">
+            <ul id="sub-menu"></ul>
+        </div>
+        
+    </header>
+    <video autoplay muted loop id="myVideo">
+        <source src="Stock1.mp4" type="video/mp4">
+    </video>
+
+    <section id="items" class="items">
+         <h2 class="centered-heading">Our Exclusive Items</h2>
+        <div class="item-grid" id="itemGrid">
+            <div class="item-box" data-name="Elegant Design" data-price="150">
+                <img src="clothing1.jpg" alt="Elegant Design">
+                <h3>Elegant Design</h3>
+            </div>
+            <div class="item-box" data-name="Luxury Functionality" data-price="200">
+                <img src="clothing2.jpg" alt="Luxury Functionality">
+                <h3>Luxury Functionality</h3>
+            </div>
+            <div class="item-box" data-name="Crafted Perfection" data-price="180">
+                <img src="clothing3.jpg" alt="Crafted Perfection">
+                <h3>Crafted Perfection</h3>
+            </div>
+            <div class="item-box" data-name="Classic Elegance" data-price="220">
+                <img src="clothing4.jpg" alt="Classic Elegance">
+                <h3>Classic Elegance</h3>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 STONE WALL. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    const searchUI = document.getElementById('searchUI');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    const items = Array.from(document.querySelectorAll('.item-box'));
+    const topSearchBar = document.getElementById('topSearchBar');
+    const cartUI = document.getElementById('cartUI');
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartIcon = document.getElementById('cartIcon');
+    const cartItemCount = document.createElement('div');
+    
+    // Create cart count badge
+    cartItemCount.id = 'cartItemCount';
+    cartItemCount.innerText = '0';
+
+    cartIcon.appendChild(cartItemCount);
+
+    // Open Search UI
+    topSearchBar.addEventListener('click', () => {
+        openSearchUI();
+    });
+
+    function openSearchUI() {
+        searchUI.dataset.active = 'true';
+        searchUI.classList.add('active');
+        topSearchBar.classList.add('hidden');
+        filterItems();
+        searchInput.focus();
+    }
+
+    function closeSearchUI() {
+        searchUI.dataset.active = 'false';
+        searchUI.classList.remove('active');
+        topSearchBar.classList.remove('hidden');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+    }
+
+    document.addEventListener('click', (event) => {
+        if (
+            searchUI.dataset.active === 'true' &&
+            !searchUI.contains(event.target) &&
+            !topSearchBar.contains(event.target)
+        ) {
+            closeSearchUI();
+        }
+    });
+
+    searchUI.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    // Toggle Cart UI
+    if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+            toggleCartUI();
+        });
+    }
+
+    window.toggleCartUI = function () {
+        cartUI.classList.toggle('active');
+    };
+
+    // Filter items dynamically
+    function filterItems() {
+        const query = searchInput.value.toLowerCase();
+        const filteredItems = items.filter(item =>
+            item.getAttribute('data-name').toLowerCase().includes(query)
+        );
+
+        const placeholderItems = Array(4 - filteredItems.length)
+            .fill('<div class="item-box placeholder"></div>')
+            .join('');
+
+        searchResults.innerHTML = filteredItems
+            .map(item => {
+                const imgSrc = item.querySelector('img').src;
+                const name = item.getAttribute('data-name');
+                const price = item.dataset.price || '100';
+                return `
+                    <div class="item-box">
+                        <img src="${imgSrc}" alt="${name}">
+                        <h3>${name}</h3>
+                        <p>Price: $${price}</p>
+                        <button onclick="addToCart('${name}', ${price}, '${imgSrc}')">Add to Cart</button>
+                    </div>
+                `;
+            })
+            .join('') + placeholderItems;
+
+        if (filteredItems.length === 0) {
+            searchResults.innerHTML = `<p>No items found.</p>`;
+        }
+    }
+
+     // Add to Cart functionality
+     window.addToCart = function (name, price, imgSrc) {
+        const existingItem = [...cartItemsContainer.children].find(
+            item => item.querySelector('h3').innerText === name
+        );
+
+        
+        if (existingItem) {
+            const quantityInput = existingItem.querySelector('.quantity input');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        } else {
+            const cartItemHTML = `
+                <div class="cart-item">
+                    <img src="${imgSrc}" alt="${name}">
+                    <div class="item-details">
+                        <h3>${name}</h3>
+                        <p>Price: $${price}</p>
+                        <div class="quantity">
+                            <button onclick="updateQuantity(this, -1)">-</button>
+                            <input type="number" value="1" readonly>
+                            <button onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="remove-item" onclick="removeCartItem(this)">Remove</button>
+                    </div>
+                </div>
+            `;
+            cartItemsContainer.insertAdjacentHTML('beforeend', cartItemHTML);
+        }
+
+        updateCartTotal();
+        updateCartItemCount(); // Update the cart item count after adding
+    };
+
+    // Update item quantity
+    window.updateQuantity = function (button, change) {
+        const quantityInput = button.parentElement.querySelector('input');
+        const currentQuantity = parseInt(quantityInput.value);
+        const newQuantity = Math.max(1, currentQuantity + change);
+        quantityInput.value = newQuantity;
+        updateCartTotal();
+    };
+
+  
+    // Remove a cart item
+    window.removeCartItem = function (button) {
+        const cartItem = button.closest('.cart-item');
+        cartItem.remove();
+        updateCartTotal();
+        updateCartItemCount(); // Update the cart item count after removing
+    };
+
+   // Update item quantity
+   window.updateQuantity = function (button, change) {
+        const quantityInput = button.parentElement.querySelector('input');
+        const currentQuantity = parseInt(quantityInput.value);
+        const newQuantity = Math.max(1, currentQuantity + change);
+        quantityInput.value = newQuantity;
+        updateCartTotal();
+    };
+
+    // Update the cart total
+    function updateCartTotal() {
+        const cartItems = document.querySelectorAll('.cart-item');
+        let total = 0;
+
+        cartItems.forEach(item => {
+            const priceText = item.querySelector('.item-details p').innerText;
+            const price = parseFloat(priceText.replace('Price: $', ''));
+            const quantity = parseInt(item.querySelector('.quantity input').value);
+            total += price * quantity;
+        });
+
+        document.querySelector('.cart-footer h3').innerText = `Total: $${total.toFixed(2)}`;
+    }
+
+    // Update the cart item count
+    function updateCartItemCount() {
+        const cartItems = document.querySelectorAll('.cart-item');
+        const count = cartItems.length;
+        cartItemCount.innerText = count;
+
+        // Show or hide the cart count badge
+        cartItemCount.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    // Initialize the cart count on page load
+    updateCartItemCount();
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const checkoutButton = document.querySelector('.checkout-btn'); // Select the Checkout Now button
+
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', () => {
+            const cartItems = [];
+
+            // Collect all cart items from the DOM
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const name = item.querySelector('h3').innerText;
+                const price = parseFloat(item.querySelector('.item-details p').innerText.replace('Price: $', ''));
+                const quantity = parseInt(item.querySelector('.quantity input').value);
+                const imgSrc = item.querySelector('img').src;
+
+                cartItems.push({ name, price, quantity, imgSrc });
+            });
+
+            // Save cart items to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            // Navigate to Cart.html
+            window.location.href = 'Cart.html';
+        });
+    } else {
+        console.error('Checkout button not found in the DOM.');
+    }
+});
+ // Handle Menu Toggle
+function toggleMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('active');
+
+    // Ensure the submenu is also closed when the main menu is toggled
+    if (!navMenu.classList.contains('active')) {
+        closeSubMenu();
+    }
+}
+
+function closeMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    if (navMenu) {
+        navMenu.classList.remove('active'); // Close the main menu
+    }
+    closeSubMenu(); // Close the submenu when the main menu is closed
+}
+function closeSubMenu() {
+    const subMenuContainer = document.getElementById('sub-menu-container');
+    if (subMenuContainer) {
+        subMenuContainer.classList.remove('active'); // Hide the submenu
+    }
+}
+
+// Open Submenu when an option from the main menu is selected
+function openSubMenu(menu) {
+    const subMenuContainer = document.getElementById('sub-menu-container');
+    const subMenuList = document.getElementById('sub-menu');
+
+    // Define submenu items and their corresponding HTML pages
+    const subMenuItems = {
+        men: [
+            { name: 'Shirts', link: 'shirts.html' },
+            { name: 'Pants', link: 'pants.html' },
+            { name: 'Shoes', link: 'shoes.html' },
+            { name: 'Accessories', link: 'accessories.html' },
+            { name: 'New Arrivals', link: 'new-arrivals.html' }
+        ],
+        women: [
+            { name: 'Dresses', link: 'dresses.html' },
+            { name: 'Tops', link: 'tops.html' },
+            { name: 'Shoes', link: 'shoes.html' },
+            { name: 'Handbags', link: 'handbags.html' },
+            { name: 'Jewelry', link: 'jewelry.html' }
+        ]
+        // Add more categories as needed
+    };
+
+    // Populate submenu with buttons
+    subMenuList.innerHTML = subMenuItems[menu]
+        .map(
+            item =>
+                `<li><button class="submenu-btn" onclick="navigateTo('${item.link}')">${item.name}</button></li>`
+        )
+        .join('');
+
+    // Show the submenu
+    subMenuContainer.classList.add('active');
+}
+
+// Function to handle navigation to different HTML pages
+function navigateTo(link) {
+    window.location.href = link;
+}
+
+    </script>
+</body>
+</html>

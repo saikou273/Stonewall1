@@ -1,0 +1,250 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #dcdcdc;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fff;
+    font-family: 'Times New Roman', serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.video-gallery {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.video-item {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.video-item:hover video {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #ffffff;
+    z-index: 3;
+}
+
+.overlay h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.overlay a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+}
+
+.pause-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    font-size: 18px;
+}
+
+.stonewall-header {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Times New Roman', serif;
+    font-size: 48px;
+    font-weight: bold;
+    z-index: 4;
+    color: #4a4a4a;
+    text-align: center;
+}
+
+.stonewall-subtext {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    color: #4a4a4a;
+    text-align: center;
+}
+
+.stonewall-location {
+    position: absolute;
+    top: 56%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.footer {
+    background-color: #dcdcdc;
+    padding: 40px 30px;
+    text-align: left;
+    font-family: 'Times New Roman', serif;
+    color: #000;
+    position: relative;
+}
+
+.footer h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.footer form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.footer input[type="email"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.footer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer button:hover {
+    background-color: #444;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+}
+
+.footer-links a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-stonewall {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 40px;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.footer-region {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-region select {
+    padding: 5px;
+    font-size: 14px;
+}
+.stonewall-header,
+.stonewall-subtext,
+.stonewall-location {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 5;
+}
+
+.stonewall-header {
+    top: 45%;
+    font-family: 'Times New Roman', serif;
+    font-size: 48px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.stonewall-location {
+    top: 50%;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+}
+.stonewall-image {
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 150px;
+    z-index: 5;
+}
+.video-item {
+    position: relative;
+}
+
+.video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+.video-item.darkened video {
+    filter: brightness(0.5);
+}
